@@ -44,7 +44,14 @@ def get_credentials():
 def save_df_to_csv(df):
     df.to_csv('loan_payments.csv', index=False) # index=False is used to avoid saving the index column.
 
+#Function to open the .csv file obtained from the RDS
+def open_csv_as_df():
+    df = pd.read_csv('loan_payments.csv')
+    return df
+
 if __name__ == '__main__':
-    RDSDatabaseConnector(get_credentials())
+    #RDSDatabaseConnector(get_credentials())
+    df = open_csv_as_df()
+    print(df.head())
 
 # %%
