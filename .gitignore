@@ -1,2 +1,3 @@
 # ignore credentials file:
 credentials.yaml
+__pycache__/

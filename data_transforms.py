@@ -22,7 +22,7 @@ class DataTransform:
     remove_columns(df, list_columns)
         Removes the columns especified in a list (list_columns) from the dataframe df.
 
-    impute_values(df, list_columns)
+    impute_median_values(df, list_columns)
         Fills empty rows of data with the column median for each column especified in the list: list_columns.
 
     transform_skewed(df, list_columns)
@@ -43,9 +43,9 @@ class DataTransform:
         df = df.drop(columns=list_columns)
         return df
     
-    def impute_values(self, df, list_columns):
+    def impute_median_values(self, df, list_columns):
         '''
-        Method to impute missing values using the median value for the column.
+        Method to impute missing values using the median value for each column.
         '''
         for each_column in list_columns:
             df[each_column] = df[each_column].fillna(df[each_column].median())

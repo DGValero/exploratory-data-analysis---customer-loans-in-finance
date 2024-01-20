@@ -175,6 +175,18 @@ class Plotter:
         plt.title(title)
         plt.show()
 
+    def discrete_probability_distribution(self, df, column):
+        # Calculate value counts and convert to probabilities
+        probs = df[column].value_counts(normalize=True)
+
+        # Create bar plot
+        dpd=sns.barplot(y=probs.values, x=probs.index)
+
+        plt.xlabel('Values')
+        plt.ylabel('Probability')
+        plt.title('Discrete Probability Distribution')
+        plt.show()
+
     # ADDITIONAL PLOTTING METHODS (NOT USED IN THE ANALYSIS)===================================
     # =========================================================================================
     def box_whisker_plots_Matplotlib(self, df, list_columns):
