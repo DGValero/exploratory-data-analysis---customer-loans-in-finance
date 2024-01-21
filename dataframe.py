@@ -45,9 +45,7 @@ class DataFrameTransform:
         be stored as a yaml file in the location indicated in yaml_file.
 
     get_skewness(df, list_columns)
-        Method to identify a list of columns that contain skewed data.
-        The method will filter the list list_columns based on a skewness threshold of 5,
-        and it will print out the list of columns that are above the skewness threshold.
+        Method to skewness value of each column in list_columns.
     '''
 
     def format_to_integer(self, df, list_columns):
@@ -91,14 +89,8 @@ class DataFrameTransform:
 
     def get_skewness(self, df, list_columns):
         '''
-        Method to identify a list of columns that contain skewed data.
-        The method will filter the list list_columns based on a skewness threshold of 5,
-        and it will print out the list of columns that are above the skewness threshold.
+        Method to skewness value of each column in list_columns.
         '''
-        list_skewed_columns = []
         for each_column in list_columns:
-            if abs(df[each_column].skew()) > 5: # This is the value I defined as my skew threshold 
-                print(f"Population {each_column} is skewed with a skew value of {df[each_column].skew()}")
-                list_skewed_columns.append(each_column)
-        print(list_skewed_columns)
-        return list_skewed_columns
+            print(f"Population {each_column} has a skew value of {round(df[each_column].skew(),2)}")
+
