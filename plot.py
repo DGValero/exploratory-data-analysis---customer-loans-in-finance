@@ -22,6 +22,8 @@ class Plotter:
         List containing the names of the columns where we want to apply the method
     numeric_columns: list
         List containing the names of columns with numeric data types
+    categorical_features: list
+        List containing the names of columns with categorical data types
     title: string
         Title of the graph
 
@@ -52,8 +54,11 @@ class Plotter:
     correlation_plot(df)
         Plots a graph to visualise correlation vlues for a dataframe, df.
 
-    count_plot(df,, title)
+    count_plot_single(df,, title)
         Count plot for categorical variables
+
+    count_plots(df, categorical_features)
+        Count plots for multiple categorical variables
     '''
 
     def histogram_plots(self, df, list_columns):
@@ -167,13 +172,22 @@ class Plotter:
         plt.title('Correlation Matrix of all Numerical Variables')
         plt.show()
 
-    def count_plot(self, df, title):
+    def count_plot_single(self, df, title):
         '''
-        Count plot for categorical variables
+        Count plot for a single categorical variable
         '''
         sns.countplot(df)
         plt.title(title)
         plt.show()
+    
+    def count_plots(self, df, categorical_features):
+        '''
+        Count plots for multiple categorical variables
+        '''
+        sns.set(font_scale=0.7) 
+        data_frame = pd.melt(df, value_vars=categorical_features)
+        facet_grid = sns.FacetGrid(data_frame, col="variable",  col_wrap=3, sharex=False, sharey=False)
+        facet_grid = facet_grid.map(sns.countplot, "value")
 
     def discrete_probability_distribution(self, df, column):
         # Calculate value counts and convert to probabilities
