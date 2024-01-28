@@ -1,13 +1,20 @@
-
 # Exploratory Data Analysis - Customer Loans in Finance
+### **Table of contents:**
 
+ - [A description of the project](#item-one)
+
+ - [Installation instructions](#item-two)
+
+ - [File structure of the project](#item-three)
+
+<a id="item-one"></a>
 
 ## A description of the project
 ### The aim of the project
 The aim of the project is to simulate a real world Exploratory Data Analysis on finance data, in this case customer loans. 
 
 ### What it does
-As it would happen in a real case, the data was stored in an AWS database. To analyse the data, first I created a script **db_Extraction.py** to connect to the database and I used the credentials stored in a .yaml file. Once the connection was stablished, the script downloads the data and stores it locally as a .csv file for improved performance. A copy of this file is also saved in the repository as **loan_payments.csv**.
+As it would happen in a real case, the data was stored in an AWS database. To analyse the data, first I created a script `db_Extraction.py` to connect to the database and I saved the credentials in a .yaml file. I creted this file so can add it to gitignore for safety. Once the connection was stablished, the script downloads the data and stores it locally as a .csv file for improved performance. A copy of this file is also saved in the repository as **loan_payments.csv**.
 
 Next, I created a python notebook to analyse and document the data analysis, in a file named **db_Analysis.ipynb**. 
 
@@ -25,6 +32,7 @@ The analysis undertaken in the python notebook is split in different sections:
 4. Dropping overly correlated columns
 5. Current state of the loans, where I analyse the data draw conclusions
 
+<a id="item-two"></a>
 
 ## Installation instructions
 First initialise git bash. Then you will need to navigate to the folder directory where you would like to save the files. For example in Windows:
@@ -35,6 +43,8 @@ To get a copy of this repository, you can do so with the following command:
 
 ## Usage instructions
 Open the **db_Analysis.ipynb** to explore the data analysis undertaken on the customer loan finance database saved as a csv file: **loan_payments.csv** 
+
+<a id="item-three"></a>
 
 ## File structure of the project
 **db_Analysis.ipynb** this is the main file of the project. It is a python notebook that contains the data analysis undertaken on a customer loan finance database.
