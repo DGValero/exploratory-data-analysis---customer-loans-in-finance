@@ -27,19 +27,19 @@ To do so, I created a script **db_Extraction.py** to connect to the RDS database
 1. I saved the connection credentials in a .yaml file, as I do not want my credentials being pushed to GitHub for security reasons. To load the credentials.yaml file I used the python package `PyYAML`.
 ![credentials screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/credentialsYAML.png)
 
-2. I created a python method **RDSDatabaseConnector** that initialises a `SQLAlchemy` engine using the credetials passed from the yaml file. 
+2. I created a python method **RDSDatabaseConnector** that initialises a `SQLAlchemy` engine using the credentials passed from the yaml file. 
 3. The method above extracts data from the RDS database and returns it as a `Pandas` dataframe.
 4. Finally, I created a function to save the dataframe to a csv file for improved performance. A copy of the csv file is also saved in the repository as **loan_payments.csv**.
 ![Loan payments screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/Loan_spreadsheet.png)
 
 #### Exploratory Data Analysis (EDA)
-Next, I created a python notebook to analyse and document the data analysis, in a file named **db_Analysis.ipynb**. This is the main file of the project where the exploratory data analyis is undertaken.
+Next, I created a python notebook to analyse and document the data analysis, in a file named **db_Analysis.ipynb**. This is the main file of the project where the exploratory data analysis is undertaken.
 
 For readability and in order to create a set of methods (tools) that I can reuse for future projects I created 3 modules that are imported into the **db_Analysis.ipynb** python notebook:
-- **dataframe.py**: this is a python module I created to perform changes on dataframes. It includes methods to formatting data types,removing suffixes, mapping data and obtaining the skewness of data.
-    - **employment_length_dict.yaml**: this is a yaml file I created and it contains a dictionary to map the employment lenght data, so that the data can be converted to a categorical type.
+- **dataframe.py**: this is a python module I created to perform changes on dataframes. It includes methods to formatting data types, removing suffixes, mapping data and obtaining the skewness of data.
+    - **employment_length_dict.yaml**: this is a yaml file I created and it contains a dictionary to map the employment length data, so that the data can be converted to a categorical type.
 - **data_transforms.py**: this is a python module I created to perform data transformations. It includes methods for removing columns, imputing values, transform skewed data, and removing outliers.
-- **plot.py**: this is a python module I created to aid in the creation of graphs during my data analysis. It contains methods to create histograms, q-q charts, count plots, amongts other plotting methods.
+- **plot.py**: this is a python module I created to aid in the creation of graphs during my data analysis. It contains methods to create histograms, q-q charts, count plots, amongst other plotting methods.
 
 I split the analysis undertaken in the python notebook in five different sections, this is detailed the paragraphs below.
 
@@ -48,11 +48,11 @@ I split the analysis undertaken in the python notebook in five different section
 I loaded the data into a dataframe using the `Pandas` method *read_csv()* and familiarised myself with the data using the *head()* and *info()* methods, identifying:
 
 - Columns that could be represented better numerically
-- Identifying catergorical columns
+- Identifying categorical columns
 - Dates that are in the wrong format
 - Null values
 
-For the columns that needed to be coverted the correct format, I created a  *DataFrameTransform()* class within the **dataframe.py** module to handle these conversions. 
+For the columns that needed to be converted the correct format, I created a  *DataFrameTransform()* class within the **dataframe.py** module to handle these conversions. 
 
 An important EDA task is to impute or remove missing values from the dataset. Missing values can occur due to a variety of reasons such as data entry errors or incomplete information. I calculated the percentage of missing data in the columns:
 - For columns with more than 10% missing data: I decided to drop these columns as they were not relevant to my analysis later on.
@@ -77,7 +77,7 @@ Finally I visualised the data to check that the results of the transformation ha
 Q-Q plot before correcting skewness:
 ![Skewness](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/skew_before.png)
 
-Q-Q plot after correcting skewness with the Yeo-Johnson tranformation:
+Q-Q plot after correcting skewness with the Yeo-Johnson transformation:
 ![Yeo_Johnson](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/skew_after.png)
 
 #### 3. Removing outliers from the data
@@ -118,7 +118,7 @@ In this section of the notebook, I calculate:
 - **Calculate losses**: I calculated the percentage of charged off loans historically and the total amount that was paid towards these loans before being charged off.
 - **Calculate projected loss**: I calculated the loss in revenue these loans would have generated for the company if they had finished their term. 
 - **Calculate possible loss**: I calculated the total amount of customers behind payments and how much loss the company would incur their status was changed to Charged Off. 
-- **Identify indicators of loss**: In this section I analysed the data to visualise the possible indicators that a customer will not be able to pay the loan. I compared columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments. To confirm my results, I used the statistical test `chi-square` to determine if the relationn between categorical variables were statistically significant.
+- **Identify indicators of loss**: In this section I analysed the data to visualise the possible indicators that a customer will not be able to pay the loan. I compared columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments. To confirm my results, I used the statistical test `chi-square` to determine if the relation between categorical variables were statistically significant.
 
 Code implementation of the `Chi-Square` test:
 ![Chi2 screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/Chi2_statististic.png)
@@ -142,7 +142,7 @@ Open the **db_Analysis.ipynb** to explore the data analysis undertaken on the cu
 
 │├── **dataframe.py** - module with methods to makes changes to dataframes
 
-││├──**employment_length_dict.yaml** - dictionary to map the employment lenght data
+││├──**employment_length_dict.yaml** - dictionary to map the employment length data
 
 │├── **data_transforms.py** - module with methods to transform data
 
