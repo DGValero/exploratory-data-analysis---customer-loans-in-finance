@@ -25,12 +25,12 @@ As it would happen in a real case scenario, the data was stored in an AWS databa
 
 To do so, I created a script **db_Extraction.py** to connect to the RDS database and download the data as csv file. To do this I followed a few steps:
 1. I saved the connection credentials in a .yaml file, as I do not want my credentials being pushed to GitHub for security reasons. To load the credentials.yaml file I used the python package `PyYAML`.
-![credentials screenshot](credentialsYAML.png)
+![credentials screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/credentialsYAML.png)
 
 2. I created a python method **RDSDatabaseConnector** that initialises a `SQLAlchemy` engine using the credetials passed from the yaml file. 
 3. The method above extracts data from the RDS database and returns it as a `Pandas` dataframe.
 4. Finally, I created a function to save the dataframe to a csv file for improved performance. A copy of the csv file is also saved in the repository as **loan_payments.csv**.
-![Loan payments screenshot](Loan_spreadsheet.png)
+![Loan payments screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/Loan_spreadsheet.png)
 
 #### Exploratory Data Analysis (EDA)
 Next, I created a python notebook to analyse and document the data analysis, in a file named **db_Analysis.ipynb**. This is the main file of the project where the exploratory data analyis is undertaken.
@@ -59,10 +59,10 @@ An important EDA task is to impute or remove missing values from the dataset. Mi
 - For columns with less than 1%: I imputed the data using statistical concepts and assumptions.
 
 Data representation before imputing data:
-![Empty data screenshot](output_before.png)
+![Empty data screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/output_before.png)
 
 Data representation after imputing data:
-![Imputed data screenshot](output_after.png)
+![Imputed data screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/output_after.png)
 
 #### 2. Identifying and correcting skewness
 
@@ -75,10 +75,10 @@ Once the skewed columns were identified, I performed different transformations o
 Finally I visualised the data to check that the results of the transformation have improved the skewness of the data. 
 
 Q-Q plot before correcting skewness:
-![Skewness](skew_before.png)
+![Skewness](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/skew_before.png)
 
 Q-Q plot after correcting skewness with the Yeo-Johnson tranformation:
-![Yeo_Johnson](skew_after.png)
+![Yeo_Johnson](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/skew_after.png)
 
 #### 3. Removing outliers from the data
 
@@ -91,10 +91,10 @@ Once identified, I used a method to remove the outliers from the dataset. Again,
 With the outliers removed, I re-visualised my data with my *Plotter* class to check that the outliers have been correctly removed. 
 
 Box-Whisker snapshot before removing outliers:
-![Box-Whisker before](BoxWhisker_before.png)
+![Box-Whisker before](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/BoxWhisker_before.png)
 
 Box-Whisker snapshot after removing outliers:
-![Box-Whisker after](BoxWhisker_after.png)
+![Box-Whisker after](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/BoxWhisker_after.png)
 
 #### 4. Dropping overly correlated columns
 
@@ -106,7 +106,7 @@ I identified the columns that are highly correlated but I decided to keep all th
 
 Correlation Matrix:
 
-![Correlatin Matrix](Correlation_matrix.png)
+![Correlatin Matrix](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/Correlation_matrix.png)
 
 #### 5. Current state of the loans
 
@@ -121,7 +121,7 @@ In this section of the notebook, I calculate:
 - **Identify indicators of loss**: In this section I analysed the data to visualise the possible indicators that a customer will not be able to pay the loan. I compared columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments. To confirm my results, I used the statistical test `chi-square` to determine if the relationn between categorical variables were statistically significant.
 
 Code implementation of the `Chi-Square` test:
-![Chi2 screenshot](Chi2_statististic.png)
+![Chi2 screenshot](https://raw.githubusercontent.com/DGValero/exploratory-data-analysis---customer-loans-in-finance/main/screenshots/Chi2_statististic.png)
 
 <a id="item-two"></a>
 
